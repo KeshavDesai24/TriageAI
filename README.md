@@ -32,7 +32,7 @@ In medical terms, **triage** means quickly assessing and categorizing patient sy
 ## ⚙️ **Setup & Run Locally**
 
 # 1️⃣ Clone the repo
-git clone https://github.com/yourusername/TriageAI.git
+git clone git clone https://github.com/KeshavDesai24/TriageAI.git
 cd TriageAI
 
 # 2️⃣ Create and activate virtual environment (recommended)
