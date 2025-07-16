@@ -1,0 +1,15 @@
+# Python bytecode files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environment folder
+triage/
+
+# Environment variables & secrets
+.env
+
+# OS files (Windows / macOS)
+*.DS_Store
+Thumbs.db
