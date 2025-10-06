@@ -80,8 +80,22 @@ def follow_up_node(state):
     state["follow_up"] = response.content.strip()
     return state
 
+
+def validate_symptom(state: dict) -> dict:
+    prompt = (
+        f"You are a medical assistant AI. Is '{state['symptom']}' a valid medical symptom? "
+        "Respond with only one word: Yes or No."
+    )
+    response = llm.invoke([HumanMessage(content=prompt)])
+    state["is_valid"] = "yes" in response.content.strip().lower()
+    return state
+
+
+
+
 # --- Build LangGraph ---
 builder = StateGraph(dict)
+builder.add_node("validate", validate_symptom)
 builder.add_node("classify", classify_symptom)
 builder.add_node("general", general_node)
 builder.add_node("emergency", emergency_node)
@@ -90,7 +104,16 @@ builder.add_node("advice", advice_node)
 builder.add_node("diet", diet_node)
 builder.add_node("follow_up", follow_up_node)
 
-builder.add_edge(START, "classify")
+builder.add_edge(START, "validate")
+builder.add_conditional_edges(
+    "validate",
+    lambda s: "classify" if s["is_valid"] else "__end__",
+    {
+        "classify": "classify",
+        "__end__": END
+    }
+)
+
 builder.add_conditional_edges("classify", symptom_router, {
     "general": "general",
     "emergency": "emergency",
@@ -115,6 +138,11 @@ if st.button("Submit"):
     if symptom.strip() and city.strip():
         state = {"symptom": symptom, "city": city}
         result = graph.invoke(state)
+        
+        if not result.get("is_valid"):
+            st.error("❌ Please enter a valid medical symptom.")
+            st.stop()
+
 
         st.subheader("Diagnosis")
         st.write(result["answer"])
