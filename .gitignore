@@ -1,15 +1,67 @@
-# Python bytecode files
+# -------------------------
+# Python
+# -------------------------
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
+*.db
+*.sqlite3
 
-# Virtual environment folder
-triage/
+# Virtual environment
+venv/
+.env/
+.env.*
 
-# Environment variables & secrets
-.env
+# -------------------------
+# Logs
+# -------------------------
+*.log
 
-# OS files (Windows / macOS)
-*.DS_Store
+# -------------------------
+# OS files
+# -------------------------
+.DS_Store
 Thumbs.db
+
+# -------------------------
+# IDE / Editor
+# -------------------------
+.vscode/
+.idea/
+
+# -------------------------
+# Docker
+# -------------------------
+*.tar
+
+# -------------------------
+# Kubernetes
+# -------------------------
+*.kubeconfig
+
+# -------------------------
+# Secrets (IMPORTANT)
+# -------------------------
+.env
+.env.local
+secrets.yaml
+*.pem
+*.key
+
+# -------------------------
+# Streamlit (frontend)
+# -------------------------
+.streamlit/secrets.toml
+
+# -------------------------
+# Node (if ever used)
+# -------------------------
+node_modules/
+
+# -------------------------
+# Build / cache
+# -------------------------
+.cache/
+dist/
+build/

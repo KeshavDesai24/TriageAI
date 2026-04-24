@@ -1,5 +1,3 @@
-streamlit
-openai
 fastapi 
 uvicorn 
 langgraph 
@@ -7,3 +5,4 @@ langchain
 langchain-community 
 python-dotenv 
 requests
+google-genai
