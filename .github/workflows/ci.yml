@@ -26,3 +26,15 @@ jobs:
       run: |
         docker build -t ${{ secrets.DOCKER_USERNAME }}/triage-ai-backend ./backend
         docker push ${{ secrets.DOCKER_USERNAME }}/triage-ai-backend
+
+    # 🔥 Frontend
+    - name: Build & Push Frontend
+      run: |
+        docker build -t ${{ secrets.DOCKER_USERNAME }}/triage-ai-frontend ./frontend
+        docker push ${{ secrets.DOCKER_USERNAME }}/triage-ai-frontend
+
+    # 🔥 AI Service
+    - name: Build & Push AI Service
+      run: |
+        docker build -t ${{ secrets.DOCKER_USERNAME }}/triage-ai-ai-service ./ai-service
+        docker push ${{ secrets.DOCKER_USERNAME }}/triage-ai-ai-service
