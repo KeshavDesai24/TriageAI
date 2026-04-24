@@ -14,8 +14,10 @@ spec:
     spec:
       containers:
       - name: backend
-        image: triage-backend
-        imagePullPolicy: Never
+        # image: triage-backend
+        # imagePullPolicy: Never
+        image: keshav635/triage-ai-backend:latest
+        imagePullPolicy: Always
         ports:
         - containerPort: 8000
         env:
