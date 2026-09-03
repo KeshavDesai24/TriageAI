@@ -12,6 +12,8 @@ services:
     build: ./backend    
     ports:
       - "8002:8000"
+    environment:
+      - GOOGLE_API_KEY=${GOOGLE_API_KEY}
     networks:
       - triage-network
 
